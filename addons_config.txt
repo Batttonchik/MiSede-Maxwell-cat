@@ -1,0 +1,149 @@
+// existing renderers on Mita
+//  - Attribute
+//  - Body
+//  - Hair
+//  - Head
+//  - Pantyhose
+//  - Shoes
+//  - Skirt
+//  - Sweater
+//
+//Known Mitas' Animators "Usual", "MitaTrue", "ShortHairs", "Kind", "Cap",
+//   "Little", "Maneken", "Black", "Dreamer", "Mila",
+//   "Creepy", "Core", "MitaGame", "MitaPerson Mita", "Dream", "Future", 
+//   "Broke", "Glasses", "MitaPerson Future", "CreepyMita"
+//
+//Available commands:
+//	trailer - unique command, doesn't need disactivation command
+//	halloween - unique command, doesn't need disactivation command	
+//      christmas - unique command, doesn't need disactivation command
+	
+//	create_static_appendix Mita Name ParentRenderer KeyWord
+
+//	create_skinned_appendix Mita Name ParentRenderer KeyWord
+
+//	replace_tex Mita Name TextureFilename KeyWord
+
+//	replace_mesh Mita Name MeshFilename MeshName KeyWord
+
+//	 # Filenames now support relative pathing with windows style slashing
+//	 # examples .\Folder1\Filename1 ; Folder2\\Filename2 ;
+//       # .\\Folder1\\Folder3\\Filename4
+
+//	remove Mita Name KeyWords   
+
+//	recover Mita Name KeyWords 
+
+//	set_scale Mita Name x y z KeyWords
+//	 # KeyWord (use "all" for every Mita possible, logic can be inverted by 
+//       # putting ! in the beginning of Keyword example "!Core" will proceed 
+//       # the command for every Mita except containing Core in the name) is 
+//       # the word which the plugin will search for in Mita's name and will 
+//	 # change the scale only for that Mita;
+//       # KeyWord can be ommited, will act as "all" in such case;
+//       # x,y,z are scales for the corresponding axes
+
+//	move_position Mita Name x y z KeyWords
+//	 #x,y,z are distances for which the Name will be moved on
+//	 #corresponding axes
+
+//	set_rotation Mita Name x y z w KeyWords
+//	 #x,y,z,w are the angles of Quaternion the object will be rotated by
+
+//made by batttonchik Maxwell
+
+//Usage:
+//	*ButtonName
+//	commands on activation
+//	-commands on disactivation
+
+*TrailerMode
+trailer
+
+*Halloween
+halloween
+
+*Christmas
+christmas
+
+*CatEars
+create_static_appendix Mita CatEars Head
+replace_tex Mita CatEars CatEars\\CatEar_BaseColor
+replace_mesh Mita CatEars CatEars\\MitaCatMaid CatEars
+set_scale Mita CatEars 1.55 1.5 1.7 Core
+set_scale Mita CatEars 0.85 0.85 0.85 Maneken
+move_position Mita CatEars 0.00 -0.01 0.02 Maneken
+move_position Mita CatEars 0.00 -0.01 0.02 Maneken
+move_position Mita CatEars 0.00 0.08 0.00 Creepy
+-remove Mita CatEars
+
+*MaxwellCat
+create_skinned_appendix Mita Maxwell Body
+replace_tex Mita Maxwell MaxwellCat\maxwell
+replace_mesh Mita Maxwell MaxwellCat\maxwell maxwell
+remove Mita Body
+remove Mita Attribute
+remove Mita Hair
+remove Mita Head
+remove Mita Pantyhose
+remove Mita Shoes
+remove Mita Skirt
+remove Mita Sweater
+-remove Mita Maxwell
+-recover Mita Attribute
+-recover Mita Body
+-recover Mita Hair
+-recover Mita Head
+-recover Mita Pantyhose
+-recover Mita Shoes
+-recover Mita Skirt
+-recover Mita Sweater
+
+
+*MonikaHair
+create_static_appendix Mita JustMonika Head
+replace_tex Mita JustMonika HM_BaseColor
+replace_mesh Mita JustMonika MonikaHair JustMonika
+remove Mita Hair
+remove Mita Hairs
+replace_tex Mita Head Face !Little !Core
+remove Mita Attribute
+move_position Mita JustMonika 0.00 0.05 0.05 Creepy
+set_scale Mita MonikaHair 1.1 1.1 1.18 Mila Creepy
+set_scale Mita JustMonika 1.55 1.5 1.7 Core
+-remove Mita JustMonika
+-recover Mita Hair
+-recover Mita Hairs
+-recover Mita Attribute
+
+*RemoveSkirt
+remove Mita Skirt
+-recover Mita Skirt
+
+*RemoveSweater
+remove Mita Sweater
+-recover Mita Sweater
+
+*RemoveAttribute
+remove Mita Attribute
+-recover Mita Attribute
+
+*RemoveHair
+remove Mita Hair
+-recover Mita Hair
+
+*RemoveBody
+remove Mita Body
+-recover Mita Body
+
+*RemoveHead
+remove Mita Head
+-recover Mita Head
+
+*RemovePantyhose
+remove Mita Pantyhose
+-recover Mita Pantyhose
+
+*RemoveShoes
+remove Mita Shoes
+-recover Mita Shoes
